@@ -1,0 +1,137 @@
+*{
+    padding:0;
+    margin: 0;
+
+}
+
+body {
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+
+}
+
+.menu-bar{
+    background: linear-gradient(
+        to left,
+        #00425A,
+        #E7B10A
+        );
+    text-align: center;
+
+}
+
+
+
+.menu-bar ul{
+    display: inline-flex;
+    list-style: none;
+    color: white;
+
+
+}
+.menu-bar ul li{
+    width: 120px;
+    margin: 15px;
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+
+}
+.menu-bar ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+/* .active, .menu-bar ul li:hover{
+    background: rgb(247, 231, 6);
+    border-radius: 3px;
+} */
+
+.sub-menu-1{
+    display: none;
+}
+
+.menu-bar ul li:hover .sub-menu-1{
+    display: block;
+    position: absolute;
+    background: rgb(236, 233, 5);
+    margin-top: 15px;
+    margin-left: -15px;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul{
+    display: block;
+    margin: 10px;
+}
+
+.table-responsive{
+    max-width: 900px;
+    padding: 15px;
+    overflow: auto;
+    margin: auto;
+    border-radius: 4px;
+
+}
+
+table{
+    width: 100%;
+    font-size: 14px;
+    color: #444;
+    white-space: nowrap;
+    border-collapse: collapse;
+    border: 1px solid rgb(12, 11, 11);
+}
+
+table>thead{
+    background-color: rgb(202, 216, 0);
+    color: whitesmoke;
+}
+
+table>thead th{
+    padding: 15px;
+}
+
+
+
+table>tbody>tr{
+    text-align: center;
+}
+
+table>tbody>tr>td>img{
+    display: inline-flex;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.action-btn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action_btn>a{
+    text-decoration: none;
+   /* color: #444; */
+   /* background: whitesmoke;*/
+    border: 1px solid  rgb(255, 255, 255);
+    display: inline-block;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 7px;
+    transition: 1s ease-in-out;
+}
+
+.action_btn>a:nth-child(1){
+    background: rgb(0, 217, 255);
+    color: white;
+}
+.action_btn>a:nth-child(2){
+    background: rgb(255, 0, 0);
+    color: white;
+}
+
+
+
+

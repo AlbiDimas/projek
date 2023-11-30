@@ -1,0 +1,162 @@
+{{--Database--}}
+
+Database Name	: app_uptlogam
+
+Tables		:
+
+// barang -> CREATE TABLE `barang` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `barang_nama` varchar(255) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `barang_stock` varchar(255) NOT NULL,
+  `barang_deskripsi` varchar(255) NOT NULL,
+  `kategori_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// data_lahan -> CREATE TABLE `data_lahan` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `lokasi_lahan` varchar(255) NOT NULL,
+  `luas_lahan` varchar(255) NOT NULL,
+  `penanggung_jawab` varchar(255) NOT NULL,
+  `foto_lahan` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+// kondisi_barang -> CREATE TABLE `kondisi_barang` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `kondisi` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+// lahan -> CREATE TABLE `lahan` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nama_ikm` varchar(255) NOT NULL,
+  `penanggung_jawab` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `no_hp` varchar(255) NOT NULL,
+  `lokasi_lahan` varchar(255) NOT NULL,
+  `luas_lahan` varchar(255) NOT NULL,
+  `legalitas1` varchar(255) NOT NULL,
+  `ktp` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// mesin -> CREATE TABLE `mesin` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `mesin_nama` varchar(255) NOT NULL,
+  `pemesan` varchar(255) NOT NULL,
+  `mesin_spesifikasi` varchar(255) NOT NULL,
+  `mesin_jumlah` varchar(255) NOT NULL,
+  `kategori_id` int(11) NOT NULL,
+  `foto_mesin` varchar(255) NOT NULL,
+  `tgl_selesai` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// message -> CREATE TABLE `message` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `message_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// pendaftaran -> CREATE TABLE `pendaftaran` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) NOT NULL,
+  `asal_sekolah` varchar(255) NOT NULL,
+  `kontak` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `tempat_lahir` varchar(255) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `perusahaan_id` bigint(20) unsigned NOT NULL,
+  `identitas` varchar(255) NOT NULL,
+  `status_id` int(11) unsigned NOT NULL DEFAULT 3,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `tgl_daftar` date DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// pengembalian -> CREATE TABLE `pengembalian` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tgl_pengembalian` date NOT NULL,
+  `barang_id` bigint(20) unsigned NOT NULL,
+  `penyewa` varchar(255) NOT NULL,
+  `kontak` varchar(255) NOT NULL,
+  `foto_barang` varchar(255) NOT NULL,
+  `kondisi_id` bigint(20) unsigned NOT NULL,
+  `qty` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// perusahaan -> CREATE TABLE `perusahaan` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `pt_logo` varchar(255) NOT NULL,
+  `pt_nama` varchar(255) NOT NULL,
+  `pt_alamat` varchar(255) NOT NULL,
+  `pt_number` varchar(255) NOT NULL,
+  `pt_cp` varchar(255) NOT NULL,
+  `pt_bidang` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// sewa -> CREATE TABLE `sewa` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tgl_sewa` date NOT NULL,
+  `barang_id` bigint(20) unsigned NOT NULL,
+  `penyewa` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `kontak` varchar(255) NOT NULL,
+  `nilai_sewa` varchar(255) NOT NULL,
+  `legalitas` varchar(255) NOT NULL,
+  `tgl_kembali` date NOT NULL,
+  `qty` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// status -> CREATE TABLE `status` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `status` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+// users -> CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
